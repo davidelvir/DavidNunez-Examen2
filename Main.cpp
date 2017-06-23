@@ -18,7 +18,7 @@ int main(){
 	void menuAdmin(vector<Persona*>&,vector<Persona*>&, vector<Mesa*>&);
 
 	vector<Persona*>jugadores;
-	vector<Administrador*>administradores;
+	vector<Persona*>administradores;
 	vector<Persona*>repartidores;
 	vector<Mesa*>mesas;
 
@@ -75,14 +75,14 @@ int main(){
 						cout<<"Ingrese el sueldo: ";
 						cin>>sueldo;
 
-						Administrador* tem = new Administrador(nombre,edad,id,experiencia,rango,sueldo);
+						Persona* tem = new Administrador(nombre,edad,id,experiencia,rango,sueldo);
 						administradores.push_back(tem);
 						break;
 					}
 					case 2:{
 						string nombre;
 						int edad;
-						string id;
+						int id;
 						string lugar;
 						string apodo;
 						double dinero;
@@ -105,12 +105,15 @@ int main(){
 
 						Persona* tem = new Jugador(nombre,edad,id,lugar,apodo,dinero);
 						jugadores.push_back(tem);
+						break;
 
 					}
 					case 3:{
 						string nombre;
 						int edad;
-						string id;
+						int id;
+						string dificultad;
+						double dinero;
 						cout<<"Ingrese el nombre: ";
 						cin>>nombre;
 						cout<<"Ingrese la edad: ";
@@ -121,8 +124,68 @@ int main(){
 							cout<<"El id solo puede contener 4 numeros, ingrese uno nuevo: ";
 							cin>>id;
 						}
+						cout<<"Ingrese la dificultad del repartidor: ";
+						cin>>dificultad;
+						cout<<"Ingrese el dinero: ";
+						cin>>dinero;
+						Persona* tem = new Repartidor(nombre,edad,id,dificultad,dinero);
+						repartidores.push_back(tem);
+						break;
 					}
 				}
+				break;
+			}
+			case 2:{
+				int login;
+				cout<<"1. Login como administrador"<<endl;
+				cout<<"2. Login como jugador"<<endl;
+				cin>>login;
+
+				switch(login){
+					case 1:{
+						string nombreTem;
+						int idTem;
+
+						cout<<"Ingrese el nombre: ";
+						cin>>nombreTem;
+
+						cout<<"Ingrese el id: ";
+						cin>>idTem;
+
+						Persona* raiz;
+						for (int i = 0; i < administradores.size(); i++)
+						{
+							if(administradores[i]->getNombre().compare(nombreTem)==0 && administradores[i]->getID()==idTem){
+								menuAdmin(jugadores,repartidores,mesas);
+								break;
+							}
+						}
+						break;
+
+					}
+					case 2:{
+						string nombreTem;
+						int idTem;
+
+						cout<<"Ingrese el nombre: ";
+						cin>>nombreTem;
+
+						cout<<"Ingrese el id: ";
+						cin>>idTem;
+
+						Persona* raiz;
+
+						for (int i = 0; i < jugadores.size(); i++){
+							if(jugadores[i]->getNombre().compare(nombreTem)==0 && jugadores[i]->getID()==idTem){
+								menuAdmin(jugadores,repartidores,mesas);
+								break;
+							}
+						}
+
+					}
+				}
+				
+
 			}
 		}
 	}
@@ -272,4 +335,8 @@ void menuAdmin(vector<Persona*>& jugadores,vector<Persona*>& repartidores, vecto
 			}
 		}
 	}
+}
+
+void menuJugador(vector<Mesa*>& mesas){
+
 }
