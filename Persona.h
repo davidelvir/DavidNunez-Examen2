@@ -22,5 +22,7 @@ public:
 	int getEdad();
 	string getID();
 
+	virtual void poli();
+
 };
 #endif

@@ -11,3 +11,6 @@ Jugador::Jugador(string nombre,int edad,string id,string lugar,string apodo,doub
 	this->apodo = apodo;
 
 }
+void Jugador::poli(){
+	
+}

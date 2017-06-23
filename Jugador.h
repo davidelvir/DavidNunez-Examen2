@@ -13,6 +13,10 @@ public:
 	Jugador();
 	Jugador(string,int,string,string,string,double);
 
+	string getApodo(){return apodo;}
+	double getDinero(){return dinero;}
+	virtual void poli();
+
 };
 
 #endif

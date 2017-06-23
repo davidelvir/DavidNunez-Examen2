@@ -11,3 +11,11 @@ Repartidor::Repartidor(string nombre,int edad,string id,string dificultad,double
 	this->dinero = dinero;
 	this->baraja = baraja;
 }
+
+double Repartidor::getDinero(){
+	return dinero;
+}
+
+void Repartidor::poli(){
+	
+}

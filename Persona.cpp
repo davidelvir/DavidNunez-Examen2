@@ -31,3 +31,6 @@ int Persona::getEdad(){
 string Persona::getID(){
 	return id;
 }
+void Persona::poli(){
+	
+}
