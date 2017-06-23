@@ -15,7 +15,7 @@ public:
 	Baraja* baraja;
 
 	Repartidor();
-	Repartidor(string,int,string,string,double,Baraja*);
+	Repartidor(string,int,int,string,double);
 
 	double getDinero();
 	virtual void poli();

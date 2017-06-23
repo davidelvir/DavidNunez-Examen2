@@ -2,14 +2,14 @@
 
 Repartidor::Repartidor(){}
 
-Repartidor::Repartidor(string nombre,int edad,string id,string dificultad,double dinero,Baraja* baraja){
+Repartidor::Repartidor(string nombre,int edad,int id,string dificultad,double dinero){
 
 	this->nombre = nombre;
 	this->edad = edad;
 	this->id = id;
 	this->dificultad = dificultad;
 	this->dinero = dinero;
-	this->baraja = baraja;
+	baraja = new Baraja();
 }
 
 double Repartidor::getDinero(){

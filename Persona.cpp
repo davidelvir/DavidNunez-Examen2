@@ -5,7 +5,7 @@ using namespace std;
 
 Persona::Persona(){}
 
-Persona::Persona(string nombre,int edad,string id){
+Persona::Persona(string nombre,int edad,int id){
 
 	this->nombre = nombre;
 	this->edad = edad;
@@ -18,7 +18,7 @@ void Persona::setNombre(string pNombre){
 void Persona::setEdad(int pEdad){
 	edad = pEdad;
 }
-void Persona::setID(string pID){
+void Persona::setID(int pID){
 	id = pID;
 }
 
@@ -28,9 +28,9 @@ string Persona::getNombre(){
 int Persona::getEdad(){
 	return edad;
 }
-string Persona::getID(){
+int Persona::getID(){
 	return id;
 }
 void Persona::poli(){
-	
+
 }

@@ -11,7 +11,7 @@ public:
 	double dinero;
 
 	Jugador();
-	Jugador(string,int,string,string,string,double);
+	Jugador(string,int,int,string,string,double);
 
 	string getApodo(){return apodo;}
 	double getDinero(){return dinero;}

@@ -11,12 +11,13 @@ class Mesa{
 public:
 
 	int numero;
+	string tipo;
 	Persona* repartidor;
 	Persona* jugador;
 
 	Mesa();
 	int getNumero();
-	Mesa(int,Persona*,Persona*);
+	Mesa(int,Persona*,Persona*,string);
 };
 
 #endif

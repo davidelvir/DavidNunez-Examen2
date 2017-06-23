@@ -9,18 +9,18 @@ class Persona{
 public:
 
 	Persona();
-	Persona(string,int,string);
+	Persona(string,int,int);
 	string nombre;
 	int edad;
-	string id;
+	int id;
 
 	void setNombre(string);
 	void setEdad(int);
-	void setID(string);
+	void setID(int);
 
 	string getNombre();
 	int getEdad();
-	string getID();
+	int getID();
 
 	virtual void poli();
 

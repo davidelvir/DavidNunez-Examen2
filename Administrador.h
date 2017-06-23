@@ -11,7 +11,7 @@ public:
 
 	Administrador();
 
-	Administrador(string,int,string,int,string,double);
+	Administrador(string,int,int,int,string,double);
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "Jugador.h"
 
 Jugador::Jugador(){}
-Jugador::Jugador(string nombre,int edad,string id,string lugar,string apodo,double dinero){
+Jugador::Jugador(string nombre,int edad,int id,string lugar,string apodo,double dinero){
 
 	this->nombre = nombre;
 	this->edad = edad;
