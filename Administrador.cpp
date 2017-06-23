@@ -1,8 +1,8 @@
 #include "Administrador.h"
 
-Administrador(){}
+Administrador::Administrador(){}
 
-Administrador(string nombre,int edad,string id,int experiencia,string rango,double sueldo){
+Administrador::Administrador(string nombre,int edad,string id,int experiencia,string rango,double sueldo){
 
 	this->nombre = nombre;
 	this->edad = edad;

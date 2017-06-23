@@ -1,8 +1,8 @@
 #include "Repartidor.h"
 
-Repartidor(){}
+Repartidor::Repartidor(){}
 
-Repartidor(string nombre,int edad,string id,string dificultad,double dinero,Baraja* baraja){
+Repartidor::Repartidor(string nombre,int edad,string id,string dificultad,double dinero,Baraja* baraja){
 
 	this->nombre = nombre;
 	this->edad = edad;

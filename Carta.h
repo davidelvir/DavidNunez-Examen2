@@ -12,8 +12,11 @@ public:
 	string valor;
 	string simbolo;
 	string color;
-	
-	string getValor();
+
+	int getValor();
+	string getValor2();
+	string getSimbolo();
+	string getColor();
 
 
 };
