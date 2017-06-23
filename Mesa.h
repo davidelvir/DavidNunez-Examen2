@@ -18,6 +18,9 @@ public:
 	Mesa();
 	int getNumero();
 	Mesa(int,Persona*,Persona*,string);
+
+	Persona* getJugador();
+	Persona* getRepartidor();
 };
 
 #endif

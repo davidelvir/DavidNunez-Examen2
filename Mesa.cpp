@@ -16,3 +16,10 @@ Mesa::Mesa(int numero,Persona* repartidor,Persona* jugador,string tipo){
 int Mesa::getNumero(){
 	return numero;
 }
+
+Persona* Mesa::getJugador(){
+	return jugador;
+}
+Persona* Mesa::getRepartidor(){
+	return repartidor;
+}

@@ -14,8 +14,12 @@
 
 using namespace std;
 
+int sumarMano(vector<Carta*>&);
+void menuAdmin(vector<Persona*>&,vector<Persona*>&, vector<Mesa*>&);
+void Jugar(Mesa*);
+
 int main(){
-	void menuAdmin(vector<Persona*>&,vector<Persona*>&, vector<Mesa*>&);
+	
 
 	vector<Persona*>jugadores;
 	vector<Persona*>administradores;
@@ -41,7 +45,7 @@ int main(){
 		cout<<"1. Crear una persona"<<endl;
 		cout<<"2. Login"<<endl;
 		cout<<"3. Salir"<<endl;
-
+		cin>>op;
 		switch(op){
 			case 1:{
 				int crear;
@@ -62,7 +66,7 @@ int main(){
 						cin>>nombre;
 						cout<<"Ingrese la edad: ";
 						cin>>edad;
-						cout<<"Ingrese el ID(4 numeros)";
+						cout<<"Ingrese el ID(4 numeros): ";
 						cin>>id;
 						while(id>9999){
 							cout<<"El id solo puede contener 4 numeros, ingrese uno nuevo: ";
@@ -90,7 +94,7 @@ int main(){
 						cin>>nombre;
 						cout<<"Ingrese la edad: ";
 						cin>>edad;
-						cout<<"Ingrese el ID(4 numeros)";
+						cout<<"Ingrese el ID(4 numeros): ";
 						cin>>id;
 						while(id>9999){
 							cout<<"El id solo puede contener 4 numeros, ingrese uno nuevo: ";
@@ -118,7 +122,7 @@ int main(){
 						cin>>nombre;
 						cout<<"Ingrese la edad: ";
 						cin>>edad;
-						cout<<"Ingrese el ID(4 numeros)";
+						cout<<"Ingrese el ID(4 numeros): ";
 						cin>>id;
 						while(id>9999){
 							cout<<"El id solo puede contener 4 numeros, ingrese uno nuevo: ";
@@ -177,7 +181,36 @@ int main(){
 
 						for (int i = 0; i < jugadores.size(); i++){
 							if(jugadores[i]->getNombre().compare(nombreTem)==0 && jugadores[i]->getID()==idTem){
-								menuAdmin(jugadores,repartidores,mesas);
+								bool vivo = true;
+								int opJugador;
+								while(vivo){
+									cout<<"------Menu Jugador------"<<endl;
+									cout<<"1. Jugar"<<endl;
+									cout<<"2. Salir"<<endl;
+									cin>>opJugador;
+									switch(opJugador){
+										case 1:{
+											Mesa* mesaParaJugar;
+											for(int i=0; i<mesas.size();i++){
+												if(mesas[i]->getJugador()->getID() == jugadores[i]->getID()){
+													mesaParaJugar = mesas[i];
+													break;
+												}
+											}
+											if(mesaParaJugar == NULL){
+												cout<<"No está en ninguna mesa !!"<<endl;
+											}else{
+												Jugar(mesaParaJugar);
+											}
+											break;
+										}
+										case 2:{
+											vivo = false;
+											break;
+										}
+
+									}
+								}
 								break;
 							}
 						}
@@ -317,13 +350,14 @@ void menuAdmin(vector<Persona*>& jugadores,vector<Persona*>& repartidores, vecto
 					cout<<"No hay mesas creadas !!"<<endl;
 				}else{
 					int mesaElegida;
-					cout<<"Elija la mesa que quiere modificar:"<<endl;
+					cout<<"Elija la mesa que quiere eliminar:"<<endl;
 					for (int i = 0; i < mesas.size(); i++)
 					{
 						cout<<"Mesa: "<<mesas[i]->getNumero()<<endl;;
 					}
 					cin>>mesaElegida;
 					mesas.erase(mesas.begin()+mesaElegida);
+					cout<<"Mesa eliminada !!"<<endl;
 
 				}
 				break;
@@ -337,6 +371,67 @@ void menuAdmin(vector<Persona*>& jugadores,vector<Persona*>& repartidores, vecto
 	}
 }
 
-void menuJugador(vector<Mesa*>& mesas){
+void Jugar(Mesa* mesa){
+
+
+	vector<Carta*>manoJugador;
+	vector<Carta*>manoCasa;
+
+
+	int numJugador = 0;
+	int numCasa = 0;
+	bool jugando = true;
+
+	Jugador* jugador = dynamic_cast<Jugador*>(mesa->getJugador());
+	Repartidor* repartidor = dynamic_cast<Repartidor*>(mesa->getRepartidor());
+
+	repartidor->getBaraja()->shuffle();
+
+	vector<Carta*>baraja = repartidor->getBaraja();
+
+	/*Carta* retVal = baraja->getCartas().back();
+	baraja->getCartas().pop_back();*/
+
+	Carta* carta1 = baraja.back();
+	baraja.pop_back();
+	Carta* carta2 = baraja.back();
+	baraja.pop_back();
+
+	Carta* carta3 = baraja.back();
+	baraja.pop_back();
+	Carta* carta4 = baraja.back();
+	baraja.pop_back();
+
+	manoJugador.push_back(carta1);
+	manoJugador.push_back(carta2);
+
+	manoCasa.push_back(carta3);
+	manoCasa.push_back(carta4);
+
+	cout<<sumarMano(manoJugador)<<endl;;
+	cout<<sumarMano(manoCasa)<<endl;
+
+	/*while(jugando){
+
+		if(numJugador > 21 || numCasa > 21){
+			jugando = false;
+		}
+
+
+	}*/
+
 
 }
+
+int sumarMano(vector<Carta*>& mano){
+
+	int ret = 0;
+
+	for(int i=0; i<mano.size();i++){
+		ret += mano[i]->getValor();
+	}
+
+	return ret;
+
+}
+

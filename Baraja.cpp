@@ -139,3 +139,7 @@ void Baraja::setCarta(Carta* carta){
 void Baraja::shuffle(){
 	random_shuffle(cartas.begin(), cartas.end() );
 }
+
+vector<Carta*>& Baraja::getCartas(){
+	return cartas;
+}

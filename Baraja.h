@@ -18,6 +18,8 @@ public:
 
 	void shuffle();
 
+	vector<Carta*>& getCartas();
+
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "Persona.h"
 #include <string>
 #include "Baraja.h"
+#include "Carta.h"
 
 #ifndef REPARTIDOR_H
 #define REPARTIDOR_H
@@ -19,6 +20,10 @@ public:
 
 	double getDinero();
 	virtual void poli();
+
+	Carta* darCarta();
+
+	vector<Carta*>& getBaraja();
 
 };
 

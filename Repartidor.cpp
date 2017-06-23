@@ -19,3 +19,15 @@ double Repartidor::getDinero(){
 void Repartidor::poli(){
 	
 }
+
+Carta* Repartidor::darCarta(){
+
+	Carta* retVal = baraja->getCartas().back();
+	baraja->getCartas().pop_back();
+	return retVal;
+
+}
+
+vector<Carta*>& Repartidor::getBaraja(){
+	return baraja->getCartas();
+}
