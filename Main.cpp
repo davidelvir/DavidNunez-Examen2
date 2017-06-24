@@ -438,10 +438,14 @@ void Jugar(Mesa* mesa){
 	cout<<"Dinero de la casa: "<<endl;
 	cout<<repartidor->getDinero()<<endl;
 	
+	numJugador = sumarMano(manoJugador);
+	numCasa = sumarMano(manoCasa);
+	
 	int turno = 1;
 	while(jugando){
 
 		if(numJugador > 21 || numCasa > 21){
+			cout<<"El juego no pudo comenzar"<<endl;
 			jugando = false;
 		}else{
 			cout<<"Mano del jugador: "<<endl;
