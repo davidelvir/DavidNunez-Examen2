@@ -440,7 +440,7 @@ void Jugar(Mesa* mesa){
 	
 	numJugador = sumarMano(manoJugador);
 	numCasa = sumarMano(manoCasa);
-	
+
 	int turno = 1;
 	while(jugando){
 
@@ -483,6 +483,7 @@ void Jugar(Mesa* mesa){
 							jugando = false;
 							jalar = 2;
 						}
+						jalar = 2;
 					}else{
 						jalar = 2;
 						numJugador = sumarMano(manoJugador);
