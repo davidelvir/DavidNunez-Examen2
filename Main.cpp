@@ -417,6 +417,11 @@ void Jugar(Mesa* mesa){
 
 	/*cout<<sumarMano(manoJugador)<<endl;;
 	cout<<sumarMano(manoCasa)<<endl;*/
+	cout<<"Dinero del jugador: "<<endl;
+	cout<<jugador->getDinero()<<endl;
+	cout<<"Dinero de la casa: "<<endl;
+	cout<<repartidor->getDinero()<<endl;
+	
 	int turno = 1;
 	while(jugando){
 
@@ -460,6 +465,7 @@ void Jugar(Mesa* mesa){
 						}
 					}else{
 						jalar = 2;
+						numJugador = sumarMano(manoJugador);
 					}
 				}
 				turno++;
@@ -483,11 +489,11 @@ void Jugar(Mesa* mesa){
 					jugador->Ganar(apuesta*2);
 					repartidor->Perder(apuesta);
 					jugando = false;
-				}
-				if(numCasa > numJugador){
+				}else if(numCasa > numJugador){
 					cout<<"Perdió el jugador!!"<<endl;
 					jugador->setDinero(apuesta);
 					repartidor->Ganar(apuesta);
+					jugando = false;
 				}else{
 					cout<<"Perdió la casa !!"<<endl;
 					jugador->Ganar(apuesta*2);
@@ -498,7 +504,10 @@ void Jugar(Mesa* mesa){
 			}
 		}
 
-
+		cout<<"Dinero del jugador: "<<endl;
+		cout<<jugador->getDinero()<<endl;
+		cout<<"Dinero de la casa: "<<endl;
+		cout<<repartidor->getDinero()<<endl;
 
 
 	}
