@@ -17,6 +17,7 @@ using namespace std;
 int sumarMano(vector<Carta*>&);
 void menuAdmin(vector<Persona*>&,vector<Persona*>&, vector<Mesa*>&);
 void Jugar(Mesa*);
+void imprimirMano(vector<Carta*>&);
 
 int main(){
 	
@@ -214,11 +215,17 @@ int main(){
 								break;
 							}
 						}
-
+						break;
 					}
-				}
-				
 
+				}
+				break;	
+
+			}
+			case 3:{
+				cout<<"Ha salido !!"<<endl;
+				on = false;
+				break;
 			}
 		}
 	}
@@ -385,7 +392,7 @@ void Jugar(Mesa* mesa){
 	Jugador* jugador = dynamic_cast<Jugador*>(mesa->getJugador());
 	Repartidor* repartidor = dynamic_cast<Repartidor*>(mesa->getRepartidor());
 
-	repartidor->getBaraja()->shuffle();
+	repartidor->getDeck()->shuffle();
 
 	vector<Carta*>baraja = repartidor->getBaraja();
 
@@ -408,17 +415,75 @@ void Jugar(Mesa* mesa){
 	manoCasa.push_back(carta3);
 	manoCasa.push_back(carta4);
 
-	cout<<sumarMano(manoJugador)<<endl;;
-	cout<<sumarMano(manoCasa)<<endl;
-
-	/*while(jugando){
+	/*cout<<sumarMano(manoJugador)<<endl;;
+	cout<<sumarMano(manoCasa)<<endl;*/
+	int turno = 1;
+	while(jugando){
 
 		if(numJugador > 21 || numCasa > 21){
 			jugando = false;
+		}else{
+			cout<<"Mano del jugador: "<<endl;
+			imprimirMano(manoJugador);
+			cout<<"-------------------"<<endl;
+			cout<<"Mano de la casa: "<<endl;
+			cout<<manoCasa[0]->getValor2()<<" "<<manoCasa[0]->getSimbolo()<<endl;
+			cout<<"-------------------"<<endl;
+			int apuesta;
+			if(turno == 1){
+				cout<<"Ingrese su apuesta: ";
+				cin>>apuesta;
+				while(apuesta>jugador->getDinero() || apuesta>repartidor->getDinero()){
+					cout<<"La apuesta es demasiado alta, ingrese otra apuesta: ";
+					cin>>apuesta;
+				}
+				int jalar=0;
+				while(jalar!=2){
+					cout<<"Jugador, desea tomar otra carta? "<<endl;
+					cout<<"1. Si"<<endl;
+					cout<<"2. No"<<endl;
+					cin>>jalar;
+					if(jalar == 1){
+						Carta* tem = baraja.back();
+						baraja.pop_back();
+						manoJugador.push_back(tem);
+						cout<<"Nueva mano: "<<endl;
+						imprimirMano(manoJugador);
+						cout<<"------------------"<<endl;
+						numJugador = sumarMano(manoJugador);
+						if(numJugador > 21 || numCasa > 21){
+							cout<<"Se ha pasado de 21!! Perdió el juego!!"<<endl;
+							jugador->setDinero(apuesta);
+							jugando = false;
+							jalar = 2;
+						}
+					}else{
+						jalar = 2;
+					}
+				}
+				turno++;
+
+			}else{
+				int casaJala;
+				cout<<"Desea la casa tomar otra carta ?"<<endl;
+				cout<<"1. Si"<<endl;
+				cout<<"2. NO"<<endl;
+				cin>>casaJala;
+				if(casaJala==1){
+					cout<<"Carta tomada por la casa: "<<endl;
+					cout<<baraja.back()->getValor2()<<" "<<baraja.back()->getSimbolo()<<endl;
+					Carta* tem = baraja.back();
+					baraja.pop_back();
+					manoCasa.push_back(tem);
+				}
+				turno = 1;
+			}
 		}
 
 
-	}*/
+
+
+	}
 
 
 }
@@ -433,5 +498,11 @@ int sumarMano(vector<Carta*>& mano){
 
 	return ret;
 
+}
+
+void imprimirMano(vector<Carta*>& mano){
+	for (int i = 0; i < mano.size(); i++){
+		cout<<mano[i]->getValor2()<<" "<<mano[i]->getSimbolo()<<endl;
+	}
 }
 

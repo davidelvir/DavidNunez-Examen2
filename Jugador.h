@@ -17,6 +17,10 @@ public:
 	double getDinero(){return dinero;}
 	virtual void poli();
 
+
+	void setDinero(double);
+	void Ganar(double);
+
 };
 
 #endif

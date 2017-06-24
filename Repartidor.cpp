@@ -31,3 +31,7 @@ Carta* Repartidor::darCarta(){
 vector<Carta*>& Repartidor::getBaraja(){
 	return baraja->getCartas();
 }
+
+Baraja* Repartidor::getDeck(){
+	return baraja;
+}

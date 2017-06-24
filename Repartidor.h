@@ -25,6 +25,8 @@ public:
 
 	vector<Carta*>& getBaraja();
 
+	Baraja* getDeck();
+
 };
 
 #endif

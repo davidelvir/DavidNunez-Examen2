@@ -14,3 +14,11 @@ Jugador::Jugador(string nombre,int edad,int id,string lugar,string apodo,double 
 void Jugador::poli(){
 	
 }
+
+void Jugador::setDinero(double pDinero){
+	dinero -= pDinero;
+}
+
+void Jugador::Ganar(double pDinero){
+	dinero+=pDinero;
+}
