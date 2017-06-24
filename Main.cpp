@@ -196,7 +196,7 @@ int main(){
 									cout<<"1. Jugar"<<endl;
 									cout<<"2. Salir"<<endl;
 									cin>>opJugador;
-									if(mesas.size()==0)
+									if(mesas.size()==0){
 										switch(opJugador){
 											case 1:{
 												Mesa* mesaParaJugar;
@@ -217,8 +217,9 @@ int main(){
 												vivo = false;
 												break;
 											}
+										}
 
-									}//fin
+									
 								}
 							}
 							break;
