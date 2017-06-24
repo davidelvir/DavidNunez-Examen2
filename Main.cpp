@@ -196,46 +196,48 @@ int main(){
 									cout<<"1. Jugar"<<endl;
 									cout<<"2. Salir"<<endl;
 									cin>>opJugador;
-									switch(opJugador){
-										case 1:{
-											Mesa* mesaParaJugar;
-											for(int i=0; i<mesas.size();i++){
-												if(mesas[i]->getJugador()->getID() == jugadores[i]->getID()){
-													mesaParaJugar = mesas[i];
-													break;
+									if(mesas.size()==0)
+										switch(opJugador){
+											case 1:{
+												Mesa* mesaParaJugar;
+												for(int i=0; i<mesas.size();i++){
+													if(mesas[i]->getJugador()->getID() == jugadores[i]->getID()){
+														mesaParaJugar = mesas[i];
+														break;
+													}
 												}
+												if(mesaParaJugar == NULL){
+													cout<<"No está en ninguna mesa !!"<<endl;
+												}else{
+													Jugar(mesaParaJugar);
+												}
+												break;
 											}
-											if(mesaParaJugar == NULL){
-												cout<<"No está en ninguna mesa !!"<<endl;
-											}else{
-												Jugar(mesaParaJugar);
+											case 2:{
+												vivo = false;
+												break;
 											}
-											break;
-										}
-										case 2:{
-											vivo = false;
-											break;
-										}
 
-									}
+									}//fin
 								}
-								break;
 							}
+							break;
 						}
-						break;
 					}
-
+					break;
 				}
-				break;	
 
 			}
-			case 3:{
-				cout<<"Ha salido !!"<<endl;
-				on = false;
-				break;
-			}
+			break;	
+
+		}
+		case 3:{
+			cout<<"Ha salido !!"<<endl;
+			on = false;
+			break;
 		}
 	}
+}
 
 }
 
