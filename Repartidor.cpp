@@ -35,3 +35,10 @@ vector<Carta*>& Repartidor::getBaraja(){
 Baraja* Repartidor::getDeck(){
 	return baraja;
 }
+
+void Repartidor::Perder(double pDinero){
+	dinero -= pDinero;
+}
+void Repartidor::Ganar(double pDinero){
+	dinero+=pDinero;
+}

@@ -454,6 +454,7 @@ void Jugar(Mesa* mesa){
 						if(numJugador > 21 || numCasa > 21){
 							cout<<"Se ha pasado de 21!! Perdió el juego!!"<<endl;
 							jugador->setDinero(apuesta);
+							repartidor->Ganar(apuesta);
 							jugando = false;
 							jalar = 2;
 						}
@@ -475,6 +476,23 @@ void Jugar(Mesa* mesa){
 					Carta* tem = baraja.back();
 					baraja.pop_back();
 					manoCasa.push_back(tem);
+				}
+				numCasa = sumarMano(manoCasa);
+				if(numCasa > 21){
+					cout<<"Perdió la casa !!"<<endl;
+					jugador->Ganar(apuesta*2);
+					repartidor->Perder(apuesta);
+					jugando = false;
+				}
+				if(numCasa > numJugador){
+					cout<<"Perdió el jugador!!"<<endl;
+					jugador->setDinero(apuesta);
+					repartidor->Ganar(apuesta);
+				}else{
+					cout<<"Perdió la casa !!"<<endl;
+					jugador->Ganar(apuesta*2);
+					repartidor->Perder(apuesta);
+					jugando = false;
 				}
 				turno = 1;
 			}

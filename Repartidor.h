@@ -27,6 +27,9 @@ public:
 
 	Baraja* getDeck();
 
+	void Perder(double);
+	void Ganar(double);
+
 };
 
 #endif
