@@ -23,8 +23,13 @@ int main(){
 	
 
 	vector<Persona*>jugadores;
+	vector<Persona*>jugadoresTem;
+
 	vector<Persona*>administradores;
+	
 	vector<Persona*>repartidores;
+	vector<Persona*>repartidoresTem;
+	
 	vector<Mesa*>mesas;
 
 	srand ( unsigned ( std::time(0) ) );
@@ -110,6 +115,7 @@ int main(){
 
 						Persona* tem = new Jugador(nombre,edad,id,lugar,apodo,dinero);
 						jugadores.push_back(tem);
+						jugadoresTem.push_back(tem);
 						break;
 
 					}
@@ -125,7 +131,7 @@ int main(){
 						cin>>edad;
 						cout<<"Ingrese el ID(4 numeros): ";
 						cin>>id;
-						while(id>9999){
+						while(id>9999 || id<1000){
 							cout<<"El id solo puede contener 4 numeros, ingrese uno nuevo: ";
 							cin>>id;
 						}
@@ -135,6 +141,7 @@ int main(){
 						cin>>dinero;
 						Persona* tem = new Repartidor(nombre,edad,id,dificultad,dinero);
 						repartidores.push_back(tem);
+						repartidoresTem.push_back(tem);
 						break;
 					}
 				}
@@ -288,6 +295,7 @@ void menuAdmin(vector<Persona*>& jugadores,vector<Persona*>& repartidores, vecto
 					}
 					Mesa* mesa = new Mesa(mesas.size(),repartidor,jugador,tipo);
 					mesas.push_back(mesa);
+
 					cout<<"Mesa creada !!"<<endl;
 
 				}else{
